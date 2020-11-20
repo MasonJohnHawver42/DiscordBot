@@ -18,4 +18,4 @@ The config file contains two things:
         - For an example look at the config.json file
 
 # Run
-python3 main.py config.json
+python3 main.py [your config.json file path]
