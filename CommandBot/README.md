@@ -15,4 +15,4 @@ The config file contains two things:
  - the token : this is the token for the discord api
  - a list of commands : the list contains strings that denote which implementations of the Command class should be included in the bot
     - The strigns that denote the command follow this format: [file name].[command class name] . ( make sure the file is in the Commands folder )
-        - For an example look at the conjig.json file
+        - For an example look at the config.json file
