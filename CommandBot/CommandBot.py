@@ -1,4 +1,3 @@
-import json
 import discord
 
 class CommandBot(discord.Client):
@@ -11,7 +10,7 @@ class CommandBot(discord.Client):
             componets = command.split('.')
             module = getattr(__import__("Commands." + componets[0]), componets[0])
             cmd_class = getattr(module, componets[1])
-            self.commands.append(cmd_class())
+            self.commands.append(cmd_class(self))
 
     def add_command(self, command):
         self.commands.append(command)
@@ -20,17 +19,8 @@ class CommandBot(discord.Client):
         print('Logged on as {0}!'.format(self.user))
 
     async def on_message(self, message):
-        if message.author == client.user:
-            return
-
         for command in self.commands:
-            await command(message)
+            await command.call(message)
 
     def execute(self):
-        client.run(config["token"])
-
-with open('/home/mason/Programming/Python/Projects/Discord/CommandBot/config.json') as file:
-  config = json.load(file)
-
-client = CommandBot(config);
-client.execute();
+        self.run(self.config["token"])
