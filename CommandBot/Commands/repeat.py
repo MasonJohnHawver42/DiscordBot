@@ -1,8 +1,8 @@
-from Commands import command
+from Commands import PrefixedCommand
 
 #Example Command
 
-class Repeat(command.Command):
+class Repeat(PrefixedCommand.PrefixedCommand):
     def __init__(self):
         super().__init__("repeat")
 
